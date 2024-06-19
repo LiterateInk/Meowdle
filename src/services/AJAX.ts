@@ -1,4 +1,4 @@
-import type { MethodMap, Methods } from "~/requests";
+import type { RequestHandler } from "~/utils/requests";
 import type { Client } from "~/services/Client";
 
 export class AJAX {
@@ -8,15 +8,15 @@ export class AJAX {
     this.#client = client;
   }
 
-  public from<N extends Methods["name"]>(method: Methods & { name: N }) {
-    if (!method.ajax)
-      throw new Error(`${method.name} is not supported on AJAX endpoints.`);
+  public from<Request extends RequestHandler<Record<string, any>, any, any>>(request: Request) {
+    if (!request.ajax)
+      throw new Error(`${request.name} is not supported on AJAX endpoints.`);
 
     return {
-      request: async (params: MethodMap[N]["schema"] = {}): Promise<ReturnType<MethodMap[N]["handle"]>> => {
+      request: async (params: Request["schema"] = {}): Promise<ReturnType<Request["handle"]>> => {
         let url = `${this.#client.session.root}/lib/ajax/service.php`;
         url += `?sesskey=${this.#client.session.sessionKey}`;
-        url += `&info=${method.name}`;
+        url += `&info=${request.name}`;
 
         const response = await fetch(url, {
           method: "POST",
@@ -26,7 +26,7 @@ export class AJAX {
           },
           body: JSON.stringify([{
             index: 0,
-            methodname: method.name,
+            methodname: request.name,
             args: params
           }])
         });
@@ -39,11 +39,11 @@ export class AJAX {
           errorcode: string
         };
 
-        if ("error" in json && "errorcode" in json) {
+        if ("error" in json) {
           throw new Error(`(${json.errorcode}): ${json.error}`);
         }
 
-        return method.handle(json[0].data) as ReturnType<MethodMap[N]["handle"]>;
+        return request.handle(json[0].data);
       }
     };
   }

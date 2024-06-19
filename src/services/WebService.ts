@@ -1,22 +1,22 @@
-import type { Methods, MethodMap } from "~/requests";
+import type { RequestHandler } from "~/utils/requests";
 
 export class WebService {
   public constructor (public token: string, public root: string) {}
 
-  public from<N extends Methods["name"]>(method: Methods & { name: N }) {
+  public from<Request extends RequestHandler<Record<string, any>, any, any>>(request: Request) {
     return {
-      request: async (params: MethodMap[N]["schema"] = {}): Promise<ReturnType<MethodMap[N]["handle"]>> => {
+      request: async (params: Request["schema"] = {}): Promise<ReturnType<Request["handle"]>> => {
         let url = `${this.root}/webservice/rest/server.php`;
         url += `?wstoken=${encodeURIComponent(this.token)}`;
         url += "&moodlewsrestformat=json";
-        url += `&wsfunction=${encodeURIComponent(method.name)}`;
+        url += `&wsfunction=${encodeURIComponent(request.name)}`;
 
         for (const [key, value] of Object.entries(params)) {
           url += `&${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
         }
 
         const response = await fetch(url);
-        const json = await response.json() as any| {
+        const json = await response.json() as any | {
           exception: string
           errorcode: string
           message: string
@@ -26,7 +26,7 @@ export class WebService {
           throw new Error(`(${json.errorcode}): ${json.message}`);
         }
 
-        return method.handle(json) as ReturnType<MethodMap[N]["handle"]>;
+        return request.handle(json);
       }
     };
   }
