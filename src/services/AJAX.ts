@@ -10,7 +10,7 @@ export class AJAX {
 
   public from<N extends Methods["name"]>(method: Methods & { name: N }) {
     return {
-      request: async (params: MethodMap[N]["schema"]): Promise<ReturnType<MethodMap[N]["handle"]>> => {
+      request: async (params: MethodMap[N]["schema"] = {}): Promise<ReturnType<MethodMap[N]["handle"]>> => {
         let url = `${this.#client.session.root}/lib/ajax/service.php`;
         url += `?sesskey=${this.#client.session.sessionKey}`;
         url += `&info=${method.name}`;

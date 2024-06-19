@@ -5,7 +5,7 @@ export class WebService {
 
   public from<N extends Methods["name"]>(method: Methods & { name: N }) {
     return {
-      request: async (params: MethodMap[N]["schema"]): Promise<ReturnType<MethodMap[N]["handle"]>> => {
+      request: async (params: MethodMap[N]["schema"] = {}): Promise<ReturnType<MethodMap[N]["handle"]>> => {
         let url = `${this.root}/webservice/rest/server.php`;
         url += `?wstoken=${encodeURIComponent(this.token)}`;
         url += "&moodlewsrestformat=json";
