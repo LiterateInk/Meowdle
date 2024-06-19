@@ -18,3 +18,4 @@ export { TokenManager } from "~/services/TokenManager";
 
 // Builder functions for AJAX or WebService.
 export * as requests from "~/requests";
+export type { RequestHandler } from "~/utils/requests";
