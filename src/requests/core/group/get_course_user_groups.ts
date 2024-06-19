@@ -1,4 +1,5 @@
 import { UserGroup, type UserGroupFromAPI } from "~/models/UserGroup";
+import type { RequestHandler } from "~/utils/requests";
 
 interface Parameters {
   /**
@@ -20,10 +21,11 @@ interface Parameters {
   groupingid?: number
 }
 
-interface Response {
+type ResponseAPI = {
   groups: UserGroupFromAPI[]
   warnings: unknown[]
-}
+};
+type Return = Array<UserGroup>;
 
 /**
  * Get all groups in the specified course for the specified user.
@@ -36,10 +38,10 @@ export default {
   ajax: false,
   authenticated: true,
 
-  schema: {} as Parameters,
+  schema: <Parameters>{},
   name: "core_group_get_course_user_groups",
-  handle (response: Response): Array<UserGroup> {
+  handle (response) {
     return response.groups.map(UserGroup.fromAPI);
   }
-} as const;
+} satisfies RequestHandler<Parameters, ResponseAPI, Return>;
 

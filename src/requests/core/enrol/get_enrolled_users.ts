@@ -1,4 +1,5 @@
 import { type EnrolledUserFromAPI, EnrolledUser } from "~/models/EnrolledUser";
+import type { RequestHandler } from "~/utils/requests";
 
 interface Parameters {
   /** The course ID. */
@@ -29,8 +30,8 @@ interface Parameters {
   )>
 }
 
-type Response = Array<EnrolledUserFromAPI>;
-
+type ResponseAPI = Array<EnrolledUserFromAPI>;
+type Return = Array<EnrolledUser>;
 /**
  * Get course participants details.
  *
@@ -42,9 +43,9 @@ export default {
   ajax: false,
   authenticated: true,
 
-  schema: {} as Parameters,
+  schema: <Parameters>{},
   name: "core_enrol_get_enrolled_users",
-  handle (response: Response): Array<EnrolledUser> {
+  handle (response) {
     return response.map(EnrolledUser.fromAPI);
   }
-} as const;
+} satisfies RequestHandler<Parameters, ResponseAPI, Return>;

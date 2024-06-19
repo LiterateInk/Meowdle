@@ -1,4 +1,5 @@
 import { UserGroup, type UserGroupFromAPI } from "~/models/UserGroup";
+import type { RequestHandler } from "~/utils/requests";
 
 interface Parameters {
   /**
@@ -7,10 +8,9 @@ interface Parameters {
   courseid: number
 }
 
-interface Response {
-  groups: UserGroupFromAPI[]
-  warnings: unknown[]
-}
+// TODO
+type ResponseAPI = unknown;
+type Return = unknown;
 
 /**
  * Get all groups in the specified course.
@@ -24,11 +24,12 @@ export default {
   ajax: true,
   authenticated: true,
 
-  schema: {} as Parameters,
+  schema: <Parameters>{},
   name: "core_group_get_course_groups",
-  handle (response: Response): Array<UserGroup> {
+  handle (response) {
+    // TODO
     throw new Error(this.name + ": response handler is not implemented.");
     // return response.groups.map(UserGroup.fromAPI);
   }
-} as const;
+} satisfies RequestHandler<Parameters, ResponseAPI, Return>;
 

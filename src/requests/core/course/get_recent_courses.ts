@@ -1,4 +1,5 @@
 import { type RecentCourseFromAPI, RecentCourse } from "~/models/RecentCourse";
+import type { RequestHandler } from "~/utils/requests";
 
 interface Parameters {
   /**
@@ -26,7 +27,8 @@ interface Parameters {
   sort?: string | null
 }
 
-type Response = Array<RecentCourseFromAPI>;
+type ResponseAPI = Array<RecentCourseFromAPI>;
+type Return = Array<RecentCourse>;
 
 /**
  * Get last accessed courses adding additional course information like images.
@@ -39,9 +41,9 @@ export default {
   ajax: true,
   authenticated: true,
 
-  schema: {} as Parameters,
   name: "core_course_get_recent_courses",
-  handle (response: Response): Array<RecentCourse> {
+  schema: <Parameters>{},
+  handle (response) {
     return response.map(RecentCourse.fromAPI);
   }
-};
+} satisfies RequestHandler<Parameters, ResponseAPI, Return>;
