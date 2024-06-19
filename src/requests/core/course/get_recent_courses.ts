@@ -33,6 +33,7 @@ type Response = Array<RecentCourseFromAPI>;
  *
  * @location `/course/externallib.php`
  * @method `get_recent_courses`
+ * @since Moodle 3.6
  */
 export default {
   schema: {} as Parameters,

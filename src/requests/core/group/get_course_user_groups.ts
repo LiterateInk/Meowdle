@@ -1,9 +1,22 @@
 import { UserGroup, type UserGroupFromAPI } from "~/models/UserGroup";
 
 interface Parameters {
-  courseid: number
-  userid: number
-  /** @default 0 */
+  /**
+   * ID of course.
+   * @default 0 // = all the courses where the user is enrolled.
+   */
+  courseid?: number
+
+  /**
+   * ID of user.
+   * @default 0 // = current user.
+   */
+  userid?: number
+
+  /**
+   * Will return only groups in the specified grouping.
+   * @default 0 // = all groups.
+   */
   groupingid?: number
 }
 
@@ -14,9 +27,12 @@ interface Response {
 
 /**
  * Get all groups in the specified course for the specified user.
+ *
+ * @location `/group/externallib.php`
+ * @method `get_course_user_groups`
  * @since Moodle 2.9
  */
-const core_group_get_course_user_groups = {
+export default {
   schema: {} as Parameters,
   name: "core_group_get_course_user_groups",
   handle (response: Response): Array<UserGroup> {
@@ -24,4 +40,3 @@ const core_group_get_course_user_groups = {
   }
 } as const;
 
-export default core_group_get_course_user_groups;
