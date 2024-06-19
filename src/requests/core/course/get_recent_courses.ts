@@ -36,6 +36,9 @@ type Response = Array<RecentCourseFromAPI>;
  * @since Moodle 3.6
  */
 export default {
+  ajax: true,
+  authenticated: true,
+
   schema: {} as Parameters,
   name: "core_course_get_recent_courses",
   handle (response: Response): Array<RecentCourse> {

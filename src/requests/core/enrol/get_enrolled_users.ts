@@ -39,6 +39,9 @@ type Response = Array<EnrolledUserFromAPI>;
  * @since Moodle 2.1
  */
 export default {
+  ajax: false,
+  authenticated: true,
+
   schema: {} as Parameters,
   name: "core_enrol_get_enrolled_users",
   handle (response: Response): Array<EnrolledUser> {

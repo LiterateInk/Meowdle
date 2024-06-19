@@ -33,6 +33,9 @@ interface Response {
  * @since Moodle 2.9
  */
 export default {
+  ajax: false,
+  authenticated: true,
+
   schema: {} as Parameters,
   name: "core_group_get_course_user_groups",
   handle (response: Response): Array<UserGroup> {

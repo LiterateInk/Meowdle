@@ -9,6 +9,9 @@ export class AJAX {
   }
 
   public from<N extends Methods["name"]>(method: Methods & { name: N }) {
+    if (!method.ajax)
+      throw new Error(`${method.name} is not supported on AJAX endpoints.`);
+
     return {
       request: async (params: MethodMap[N]["schema"] = {}): Promise<ReturnType<MethodMap[N]["handle"]>> => {
         let url = `${this.#client.session.root}/lib/ajax/service.php`;
