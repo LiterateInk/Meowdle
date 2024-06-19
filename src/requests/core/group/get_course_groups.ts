@@ -27,8 +27,8 @@ export default {
   schema: {} as Parameters,
   name: "core_group_get_course_groups",
   handle (response: Response): Array<UserGroup> {
-    console.log(response);
-    return response.groups.map(UserGroup.fromAPI);
+    throw new Error(this.name + ": response handler is not implemented.");
+    // return response.groups.map(UserGroup.fromAPI);
   }
 } as const;
 
