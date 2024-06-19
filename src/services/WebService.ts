@@ -16,7 +16,17 @@ export class WebService {
         }
 
         const response = await fetch(url);
-        return method.handle(await response.json()) as ReturnType<MethodMap[N]["handle"]>;
+        const json = await response.json() as any| {
+          exception: string
+          errorcode: string
+          message: string
+        };
+
+        if ("exception" in json) {
+          throw new Error(`(${json.errorcode}): ${json.message}`);
+        }
+
+        return method.handle(json) as ReturnType<MethodMap[N]["handle"]>;
       }
     };
   }
