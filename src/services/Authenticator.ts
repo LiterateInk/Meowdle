@@ -1,5 +1,6 @@
 import { Client } from "~/services/Client";
 import { Session } from "~/models/Session";
+import { findValueBetween } from "~/utils/finders";
 
 export class Authenticator {
   public async fromCAS (ticketURL: string): Promise<Client> {
@@ -29,11 +30,49 @@ export class Authenticator {
       redirect: "manual"
     });
 
+    return this.#postAuthentication(response);
+  }
+
+  public async fromCredentials (root: string, username: string, password: string): Promise<Client> {
+    let response: Response;
+    let cookies: string[];
+    const url = root + "/login/index.php";
+
+    response = await fetch(url + "?loginredirect=1");
+
+    {
+      const cookie = response.headers.get("set-cookie")?.split(";")[0];
+      if (!cookie) throw new Error("'MoodleSession' cookie not found");
+      cookies = [cookie!];
+    }
+
+    const html = await response.text();
+    const loginToken = findValueBetween(html, "logintoken\" value=\"", "\"");
+
+    response = await fetch(url, {
+      method: "POST",
+      redirect: "manual",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": cookies.join("; ")
+      },
+      body: "anchor="
+        + "&logintoken=" + loginToken
+        + "&username=" + encodeURIComponent(username)
+        + "&password=" + encodeURIComponent(password)
+    });
+
+    return this.#postAuthentication(response);
+  }
+
+  async #postAuthentication (response: Response): Promise<Client> {
+    let url: string;
+
     if (response.status !== 303)
       throw new Error(`Expected a 303 status code, got ${response.status}`);
 
     // Read and store new cookies.
-    cookies = response.headers.getSetCookie()
+    const cookies = response.headers.getSetCookie()
       .map((c) => c.split(";")[0])
       .filter((c) => !c.endsWith("=deleted"));
 
