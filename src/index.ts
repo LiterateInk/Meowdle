@@ -12,10 +12,12 @@ export { Client } from "~/services/Client";
 export { WebService } from "~/services/WebService";
 
 // Sub-services that can be used as type, probably.
-export { Authenticator } from "~/services/Authenticator";
 export { Preferences } from "~/services/Preferences";
 export { TokenManager } from "~/services/TokenManager";
 
 // Builder functions for AJAX or WebService.
 export * as requests from "~/requests";
 export type { RequestHandler } from "~/utils/requests";
+
+// Functions.
+export * from "~/utils/authenticate";

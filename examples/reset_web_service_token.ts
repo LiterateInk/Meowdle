@@ -1,4 +1,4 @@
-import { Authenticator, type WebServiceToken, WebService } from "../src";
+import { authenticateFromSessionCookies, type WebServiceToken, WebService } from "../src";
 import { credentials } from "./_credentials";
 
 const COOKIES = [
@@ -11,8 +11,7 @@ const COOKIES = [
  * a web service token using Meowdle.
  */
 void async function main () {
-  const authenticator = new Authenticator();
-  const client = await authenticator.fromSessionCookies(credentials.root, COOKIES);
+  const client = await authenticateFromSessionCookies(credentials.root, COOKIES);
 
   // Get every tokens available.
   const tokens = await client.preferences.tokenManager.listTokens();
