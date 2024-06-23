@@ -16,6 +16,10 @@ export class WebService {
         }
 
         const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Expected a 200 status code, got ${response.status}. REST protocol is probably not enabled for web services.`);
+        }
+
         const json = await response.json() as any | {
           exception: string
           errorcode: string
