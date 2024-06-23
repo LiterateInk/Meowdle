@@ -21,3 +21,4 @@ export type { RequestHandler } from "~/utils/requests";
 
 // Functions.
 export * from "~/utils/authenticate";
+export * from "~/utils/webservice/fromCredentials";

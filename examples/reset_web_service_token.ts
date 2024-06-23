@@ -27,6 +27,6 @@ void async function main () {
   console.log(`The token ${token.name} (${token.id}) for service "${token.service}" just got reset to the following value: "${tokenValue}"`);
 
   // You can even now use that token for WebService !
-  const ws = new WebService(tokenValue, client.session.root);
+  const ws = new WebService(client.session.root, tokenValue);
   // And do authenticated requests with `ws`.
 }();

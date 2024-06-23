@@ -1,7 +1,7 @@
 import type { RequestHandler } from "~/utils/requests";
 
 export class WebService {
-  public constructor (public token: string, public root: string) {}
+  public constructor (public root: string, public token: string) {}
 
   public from<Request extends RequestHandler<Record<string, any>, any, any>>(request: Request) {
     return {

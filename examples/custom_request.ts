@@ -35,7 +35,7 @@ void async function main () {
   if (!credentials.ws_token)
     throw new Error("Missing the WS_TOKEN in .env file.");
 
-  const ws = new WebService(credentials.ws_token, credentials.root);
+  const ws = new WebService(credentials.root, credentials.ws_token);
 
   // Use your custom `my_request` here.
   const returnValue = await ws.from(my_request).request({
