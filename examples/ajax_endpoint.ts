@@ -1,4 +1,4 @@
-import { authenticateFromSessionCookies, requests } from "../src";
+import { clientFromSessionCookies, requests } from "../src";
 import { credentials } from "./_credentials";
 
 const COOKIES = [
@@ -14,7 +14,7 @@ const COOKIES = [
  * do the exact same thing using WebService endpoints.
  */
 void async function main () {
-  const client = await authenticateFromSessionCookies(credentials.root, COOKIES);
+  const client = await clientFromSessionCookies(credentials.root, COOKIES);
 
   const recentCourses = await client.ajax.from(requests.core.course.get_recent_courses).request({
     userid: client.session.userID,

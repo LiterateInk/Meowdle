@@ -1,7 +1,7 @@
 import { Session } from "~/models/Session";
 import { Client } from "~/services/Client";
 
-export async function authenticateFromSessionCookies (root: string, cookies: string[]): Promise<Client> {
+export async function clientFromSessionCookies (root: string, cookies: string[]): Promise<Client> {
   const url = root + "/my/";
 
   // We'll get this page since session information can be found here.

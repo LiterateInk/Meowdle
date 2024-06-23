@@ -1,7 +1,7 @@
 import type { Client } from "~/services/Client";
-import { postAuthentication } from "./helpers";
+import { clientFromAuthenticationResponse } from "./fromAuthenticationResponse";
 
-export async function authenticateFromCAS (ticketURL: string): Promise<Client> {
+export async function clientFromCAS (ticketURL: string): Promise<Client> {
   let response: Response;
   let cookies: string[];
 
@@ -28,5 +28,5 @@ export async function authenticateFromCAS (ticketURL: string): Promise<Client> {
     redirect: "manual"
   });
 
-  return postAuthentication(response);
+  return clientFromAuthenticationResponse(response);
 }

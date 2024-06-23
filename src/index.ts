@@ -20,8 +20,10 @@ export * as requests from "~/requests";
 export type { RequestHandler } from "~/utils/requests";
 
 // Functions.
-export * from "~/utils/authenticate";
-export * from "~/utils/webservice/fromCredentials";
+export { clientFromCAS } from "~/utils/login/client/fromCAS";
+export { clientFromCredentials } from "~/utils/login/client/fromCredentials";
+export { clientFromSessionCookies } from "~/utils/login/client/fromSessionCookies";
+export { webServiceFromCredentials } from "~/utils/login/webservice/fromCredentials";
 
 // Errors.
 export { MoodleError } from "~/errors/MoodleError";

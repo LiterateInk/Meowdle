@@ -1,5 +1,5 @@
-import { credentials } from "./_credentials";
-import { WebService, type RequestHandler } from "../src";
+import { credentials } from "../_credentials";
+import { WebService, type RequestHandler } from "../../src";
 
 interface MyRequestParameters {
   user_id: number

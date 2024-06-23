@@ -1,8 +1,8 @@
 import type { Client } from "~/services/Client";
-import { findValueBetween } from "../finders";
-import { postAuthentication } from "./helpers";
+import { findValueBetween } from "../../finders";
+import { clientFromAuthenticationResponse } from "./fromAuthenticationResponse";
 
-export async function authenticateFromCredentials (root: string, username: string, password: string): Promise<Client> {
+export async function clientFromCredentials (root: string, username: string, password: string): Promise<Client> {
   let response: Response;
   let cookies: string[];
   const url = root + "/login/index.php";
@@ -33,5 +33,5 @@ export async function authenticateFromCredentials (root: string, username: strin
       + "&password=" + encodeURIComponent(password)
   });
 
-  return postAuthentication(response);
+  return clientFromAuthenticationResponse(response);
 }

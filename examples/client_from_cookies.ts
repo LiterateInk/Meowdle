@@ -1,4 +1,4 @@
-import { authenticateFromSessionCookies } from "../src";
+import { clientFromSessionCookies } from "../src";
 import { credentials } from "./_credentials";
 
 const COOKIES = [
@@ -7,7 +7,7 @@ const COOKIES = [
 ];
 
 void async function main () {
-  const client = await authenticateFromSessionCookies(credentials.root, COOKIES);
+  const client = await clientFromSessionCookies(credentials.root, COOKIES);
 
   // Do whatever you want with `client` !
 }();

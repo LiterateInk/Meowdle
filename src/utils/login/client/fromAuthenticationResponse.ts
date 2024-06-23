@@ -1,7 +1,7 @@
 import type { Client } from "~/services/Client";
-import { authenticateFromSessionCookies } from "./fromSessionCookies";
+import { clientFromSessionCookies } from "./fromSessionCookies";
 
-export const postAuthentication = async (response: Response): Promise<Client> => {
+export const clientFromAuthenticationResponse = async (response: Response): Promise<Client> => {
   let url: string;
 
   if (response.status !== 303)
@@ -33,5 +33,5 @@ export const postAuthentication = async (response: Response): Promise<Client> =>
     url = url.slice(0, index);
   }
 
-  return authenticateFromSessionCookies(url, cookies);
+  return clientFromSessionCookies(url, cookies);
 };

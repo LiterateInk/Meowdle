@@ -1,5 +1,6 @@
 import { MOODLE_OFFICIAL_MOBILE_SERVICE } from "~/utils/constants";
 import { MoodleError } from "~/errors/MoodleError";
+import { WebService } from "~/services/WebService";
 
 /**
  * Obtain a token to use with web services API from a username and password.
@@ -10,7 +11,7 @@ import { MoodleError } from "~/errors/MoodleError";
  * @param serviceName The service name to use, defaults to "moodle_mobile_app".
  * @returns A token to use with web services API.
  */
-export async function obtainWebServiceTokenFromCredentials (root: string, username: string, password: string, serviceName = MOODLE_OFFICIAL_MOBILE_SERVICE): Promise<string> {
+export async function webServiceFromCredentials (root: string, username: string, password: string, serviceName = MOODLE_OFFICIAL_MOBILE_SERVICE): Promise<WebService> {
   const url = root + "/login/token.php"
     + "?username=" + encodeURIComponent(username)
     + "&password=" + encodeURIComponent(password)
@@ -29,5 +30,5 @@ export async function obtainWebServiceTokenFromCredentials (root: string, userna
     throw new MoodleError(json.error, json.errorcode);
   }
 
-  return json.token;
+  return new WebService(root, json.token);
 }
