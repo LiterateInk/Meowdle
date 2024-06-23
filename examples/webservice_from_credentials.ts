@@ -13,6 +13,7 @@ void async function main () {
   );
 
   // Do authenticated requests with `ws` !
+  console.log(ws.token);
 
   // If you need examples of requests, you can look at the
   // `webservice` folder. It contains all the requests
