@@ -1,5 +1,6 @@
 import type { RequestHandler } from "~/utils/requests";
 import type { Client } from "~/services/Client";
+import { MoodleError } from "~/errors/MoodleError";
 
 export class AJAX {
   readonly #client: Client;
@@ -39,8 +40,8 @@ export class AJAX {
           errorcode: string
         };
 
-        if ("error" in json) {
-          throw new Error(`(${json.errorcode}): ${json.error}`);
+        if ("error" in json && "errorcode" in json) {
+          throw new MoodleError(json.error, json.errorcode);
         }
 
         return request.handle(json[0].data);
