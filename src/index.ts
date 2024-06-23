@@ -22,3 +22,6 @@ export type { RequestHandler } from "~/utils/requests";
 // Functions.
 export * from "~/utils/authenticate";
 export * from "~/utils/webservice/fromCredentials";
+
+// Errors.
+export { MoodleError } from "~/errors/MoodleError";
