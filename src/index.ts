@@ -3,7 +3,10 @@ export { RSSToken } from "~/models/RSSToken";
 export { WebServiceToken } from "~/models/WebServiceToken";
 export { Session } from "~/models/Session";
 export { UserGroup } from "~/models/UserGroup";
+export { Group } from "~/models/Group";
+export { Role } from "~/models/Role";
 export { EnrolledUser } from "~/models/EnrolledUser";
+export { EnrolledCourse } from "~/models/EnrolledCourse";
 export { RecentCourse } from "~/models/RecentCourse";
 
 // Clients that will be mostly used
