@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: Meowdle
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Mikkel
+    family-names: RINGAUD
+    email: mikkel@milescode.dev
+repository-code: 'https://github.com/LiterateInk/Meowdle'
+url: 'https://literate.ink/meowdle'
+abstract: >-
+  A simple wrapper for Moodle.
+keywords:
+  - moodle
+  - wrapper
+  - api
+license: GPL-3.0
