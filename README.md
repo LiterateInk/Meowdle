@@ -51,9 +51,3 @@ If you need complete examples, then we got **a lot** of those in the [`examples`
 If none of those are helpful, you can always [open an issue](https://github.com/LiterateInk/Meowdle/issues) to ask for help.
 
 You can also join [LiterateInk's Discord server](https://literate.ink/discord) to talk about Meowdle, get help and be notified about the latest updates !
-
-## Resources
-
-- <https://docs.moodle.org/dev/Web_service_API_functions>
-- <https://moodledev.io/docs/4.5/guides/javascript/ajax>
-- <https://github.com/moodle/moodle>
