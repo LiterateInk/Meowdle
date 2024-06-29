@@ -32,11 +32,14 @@ by either opening an issue or sending a pull request.
 - [x] `core_auth_is_minor` ([example](./examples/webservice/core_auth_is_minor.ts))
 
 - [x] `core_course_get_recent_courses` ([example](./examples/webservice/core_course_get_recent_courses.ts))
+- [ ] `core_course_get_categories` (WIP: types and handler todo)
 
 - [x] `core_enrol_get_enrolled_users` ([example](./examples/webservice/core_enrol_get_enrolled_users.ts))
 
 - [x] `core_group_get_course_groups` ([example](./examples/webservice/core_group_get_course_groups.ts))
 - [x] `core_group_get_course_user_groups` ([example](./examples/webservice/core_group_get_course_user_groups.ts))
+
+- [ ] `core_user_get_course_user_profiles` (WIP: types and handler todo)
 
 *More requests to come...*
 
