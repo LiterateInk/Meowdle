@@ -30,3 +30,6 @@ export { webServiceFromCredentials } from "~/utils/login/webservice/fromCredenti
 
 // Errors.
 export { MoodleError } from "~/errors/MoodleError";
+
+// Constants.
+export { MOODLE_OFFICIAL_MOBILE_SERVICE, Format } from "~/utils/constants";
