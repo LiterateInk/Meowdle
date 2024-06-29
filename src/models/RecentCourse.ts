@@ -1,10 +1,12 @@
+import type { Format } from "~/utils/constants";
+
 export interface RecentCourseFromAPI {
   id: number
   fullname: string
   shortname: string
   idnumber: string
   summary: string
-  summaryformat: number
+  summaryformat: Format
   startdate: number
   enddate: number
   visible: boolean
@@ -31,7 +33,7 @@ export class RecentCourse {
     public readonly fullNameDisplay: string,
     public readonly shortName: string,
     public readonly summary: string,
-    public readonly summaryFormat: number,
+    public readonly summaryFormat: Format,
     public readonly startDate: Date,
     /** `null` when endless. */
     public readonly endDate: Date | null,

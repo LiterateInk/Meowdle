@@ -1,3 +1,4 @@
+import type { Format } from "~/utils/constants";
 import { UserGroup, type UserGroupFromAPI } from "./UserGroup";
 
 export interface GroupFromAPI extends UserGroupFromAPI {
@@ -11,7 +12,7 @@ export class Group extends UserGroup {
     id: number,
     name: string,
     description: string,
-    descriptionFormat: number,
+    descriptionFormat: Format,
     numberID: string,
     courseID: number,
     public readonly enrolmentKey: string,

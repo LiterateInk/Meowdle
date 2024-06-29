@@ -1,8 +1,10 @@
+import type { Format } from "~/utils/constants";
+
 export interface UserGroupFromAPI {
   id: number
   name: string
   description: string
-  descriptionformat: number
+  descriptionformat: Format
   idnumber: string
   courseid: number
 }
@@ -12,7 +14,7 @@ export class UserGroup {
     public readonly id: number,
     public readonly name: string,
     public readonly description: string,
-    public readonly descriptionFormat: number,
+    public readonly descriptionFormat: Format,
     public readonly numberID: string,
     public readonly courseID: number
   ) {}
