@@ -28,6 +28,7 @@ Join [LiterateInk's Discord server](https://literate.ink/discord) to talk about 
 - <https://docs.moodle.org/dev/Web_service_API_functions>
 - <https://moodledev.io/docs/4.5/guides/javascript/ajax>
 - <https://github.com/moodle/moodle>
+- <https://doodlezucc.github.io/MoodleREST>
 
 ## License
 
