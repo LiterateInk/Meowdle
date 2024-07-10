@@ -1,6 +1,6 @@
 # Meowdle
 
-A simple wrapper around [Moodle](https://github.com/moodle/moodle) : [WebServices](https://docs.moodle.org/404/en/Web_services) (REST only), [AJAX](https://moodledev.io/docs/4.4/guides/javascript/ajax) and scrapping directly the HTML (using [Cheerio](https://cheerio.js.org/)).
+A simple wrapper around [Moodle](https://github.com/moodle/moodle) : [WebServices](https://docs.moodle.org/404/en/Web_services) (REST only), [AJAX](https://moodledev.io/docs/4.4/guides/javascript/ajax) and scrapping directly the HTML.
 
 > [!NOTE]
 > This project is not affiliated with [Moodle](https://github.com/moodle) in any way.
