@@ -1,6 +1,10 @@
-# Meowdle
+<p align="center">
+  <picture>
+    <img alt="Meowdle Banner" src="https://github.com/LiterateInk/Meowdle/blob/27555083b1dfe5652a1f971e10af963bac2bcac5/.github/assets/readme.svg">
+  </picture>
+</p>
 
-A simple wrapper around [Moodle](https://github.com/moodle/moodle) : [WebServices](https://docs.moodle.org/404/en/Web_services) (REST only), [AJAX](https://moodledev.io/docs/4.4/guides/javascript/ajax) and scrapping directly the HTML.
+Meowdle is a simple wrapper around [Moodle](https://github.com/moodle/moodle) : [WebServices](https://docs.moodle.org/404/en/Web_services) (REST only), [AJAX](https://moodledev.io/docs/4.4/guides/javascript/ajax) and scrapping directly the HTML.
 
 > [!NOTE]
 > This project is not affiliated with [Moodle](https://github.com/moodle) in any way.
